@@ -1,0 +1,2 @@
+HLS
+Usa un CDN (Content Delivery Network):
