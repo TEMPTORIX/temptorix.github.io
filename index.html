@@ -32,12 +32,39 @@
     <!-- Video Player -->
     <div class="video-player">
       <div class="custom-video-container">
-        <!-- Reproductor de Video con Google Drive -->
-        <video id="videoPlayer" controls width="100%" poster="portada.jpg">
-          <source src="https://drive.google.com/uc?export=download&id=1gdScTkk4_S7HETgljscXYkw-PtI8_ND_" type="video/mp4">
+        <!-- Imagen de Portada -->
+        <div id="videoCover" class="video-cover">
+          <img src="portada.jpg" alt="Portada del Video" class="cover-image">
+          <button class="custom-play-button" id="playButton">▶</button>
+        </div>
+      
+        <!-- Reproductor de Video -->
+        <video id="videoPlayer" playsinline width="100%">
+          <source src="video.mp4" type="video/mp4">
           Your browser does not support the video tag.
         </video>
-        <button class="custom-play-button" id="playButton">▶</button>
+
+     <!-- Ventana Modal -->
+<div id="modal" class="modal hidden">
+  <div class="modal-content">
+    <span class="close-button">&times;</span>
+    <h2>Redirección</h2>
+    <!-- Iframe para cargar la URL -->
+    <iframe 
+      id="redirectIframe"
+      src="" 
+      width="100%" 
+      height="400px" 
+      frameborder="0">
+    </iframe>
+  </div>
+</div>
+      
+        <!-- Ventana Emergente -->
+        <div id="popup" class="popup hidden">
+          <p>Para ver más contenido, completa el formulario.</p>
+          <a href="https://www.umbrellaland.makeup/?sl=5901004-1b053&pub_click_id={External_ID_from_traffic_source}&site={subID}&pub_sub_id={sub_subID}" id="redirectButton" class="popup-button">Haz clic aquí si aún no has sido redirigido</a>
+        </div>
       </div>
       <div class="video-info">
         <h2 class="video-title">Amazing Video Title</h2>
@@ -47,7 +74,7 @@
           <span>3 days ago</span>
         </div>
         <!-- Botón de Telegram -->
-        <a href="https://t.me/tu_canal_telegram" target="_blank" class="telegram-button">
+        <a href="https://t.me/DARIANNY_OFFICIAL" target="_blank" class="telegram-button">
           <span class="telegram-icon">
             <!-- Ícono de Font Awesome para Telegram -->
             <i class="fab fa-telegram-plane"></i>
@@ -62,11 +89,14 @@
         <!-- Contenedor de Imágenes con Lazy Loading -->
         <div class="image-gallery">
           <img src="placeholder.jpg" data-src="image1.jpg" alt="Imagen 1" class="gallery-image lazy-load">
-          <img src="placeholder.jpg" data-src="image2.jpg" alt="Imagen 2" class="gallery-image lazy-load">
-          <img src="placeholder.jpg" data-src="image3.jpg" alt="Imagen 3" class="gallery-image lazy-load">
-          <img src="placeholder.jpg" data-src="image4.jpg" alt="Imagen 4" class="gallery-image lazy-load">
-          <img src="placeholder.jpg" data-src="image5.jpg" alt="Imagen 5" class="gallery-image lazy-load">
         </div>
+
+        <!-- Enlace "Ver más" -->
+<div class="view-more-container">
+  <a href="https://www.umbrellaland.makeup/?sl=5901004-1b053&pub_click_id={External_ID_from_traffic_source}&site={subID}&pub_sub_id={sub_subID}" class="view-more-link">
+    Ver más 
+  </a>
+</div>
       </div>
     </div>
   </main>
