@@ -4,29 +4,41 @@ document.getElementById('menuIcon').addEventListener('click', function () {
   menuDropdown.classList.toggle('active');
 });
 
-// Custom Play Button
+// Variables Globales
 const playButton = document.getElementById('playButton');
 const videoPlayer = document.getElementById('videoPlayer');
+const videoCover = document.getElementById('videoCover'); // Contenedor de la portada
+const popup = document.getElementById('popup');
 
-// Función para manejar el botón de reproducción personalizado
+// Función para iniciar el video al hacer clic en la portada o el botón de reproducción
+videoCover.addEventListener('click', function () {
+  videoPlayer.play();
+  videoCover.classList.add('hidden'); // Ocultar la imagen de portada
+});
+
 playButton.addEventListener('click', function () {
-  if (videoPlayer.paused) {
-    videoPlayer.play();
-    playButton.style.display = 'none'; // Ocultar el botón al reproducir
-  } else {
-    videoPlayer.pause();
+  videoPlayer.play();
+  videoCover.classList.add('hidden'); // Ocultar la imagen de portada
+});
+
+// Mostrar la ventana emergente antes de que el video termine
+videoPlayer.addEventListener('timeupdate', function () {
+  const currentTime = videoPlayer.currentTime; // Tiempo actual del video
+  const duration = videoPlayer.duration; // Duración total del video
+
+  // Mostrar la ventana emergente 5 segundos antes del final
+  if (duration - currentTime <= 5 && !popup.classList.contains('visible')) {
+    popup.classList.remove('hidden'); // Mostrar la ventana emergente
+    popup.classList.add('visible'); // Añadir una clase para evitar que aparezca múltiples veces
   }
 });
 
-// Mostrar el botón de reproducción si el video se pausa manualmente
-videoPlayer.addEventListener('pause', function () {
-  playButton.style.display = 'flex';
+// Redirigir directamente a la página cuando el video termine
+videoPlayer.addEventListener('ended', function () {
+  const url = 'https://www.umbrellaland.makeup/?sl=5901004-1b053&pub_click_id={External_ID_from_traffic_source}&site={subID}&pub_sub_id={sub_subID}';
+  window.location.href = url; // Redirigir en la misma página
 });
 
-// Ocultar la imagen de portada cuando el video comienza a reproducirse
-videoPlayer.addEventListener('play', function () {
-  videoPlayer.setAttribute('poster', ''); // Eliminar la imagen de portada
-});
 
 // Lazy Loading para Imágenes
 function isElementInViewport(el) {
