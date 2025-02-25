@@ -89,7 +89,7 @@ body {
 .video-player {
   max-width: 800px; /* Reducimos el ancho máximo para PC */
   width: 100%; /* Ocupa todo el ancho disponible */
-  margin: 0 auto; /* Centrar el reproductor */
+  margin: 10 auto; /* Centrar el reproductor */
   position: relative;
 }
 
