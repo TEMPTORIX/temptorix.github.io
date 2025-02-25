@@ -89,13 +89,14 @@ body {
 .video-player {
   max-width: 800px; /* Reducimos el ancho máximo para PC */
   width: 100%; /* Ocupa todo el ancho disponible */
-  margin: 10 auto; /* Centrar el reproductor */
+  margin: 0 auto; /* Centrar el reproductor */
   position: relative;
 }
 
 /* Contenedor del Video */
 .custom-video-container {
   position: relative;
+  margin-top: 10px;
   width: 100%;
   aspect-ratio: 16 / 9; /* Proporción de pantalla común (16:9) */
   overflow: hidden;
