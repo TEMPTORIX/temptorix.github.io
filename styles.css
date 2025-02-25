@@ -156,96 +156,6 @@ video::-webkit-media-controls-time-remaining-display {
 }
 
 
-/* Estilo para la ventana emergente */
-.popup {
-  display: none; /* Oculto por defecto */
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #fff; /* Fondo blanco */
-  color: #000; /* Texto negro */
-  padding: 1rem;
-  border-radius: 12px; /* Bordes redondeados */
-  text-align: center;
-  z-index: 1000; /* Asegura que esté sobre el video */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Sombra para dar profundidad */
-  max-width: 100%; /* Ancho máximo igual al contenedor del video */
-  width: calc(100% - 2rem); /* Ancho responsivo */
-}
-
-.popup.hidden {
-  display: none; /* Clase para ocultar la ventana modal */
-}
-
-.popup.visible {
-  display: block; /* Clase para mostrar la ventana modal */
-}
-
-/* Mensaje dentro de la ventana emergente */
-.popup p {
-  font-size: 1rem;
-  margin-bottom: 1rem;
-}
-
-/* Botón dentro de la ventana emergente */
-.popup-button {
-  display: inline-block;
-  background-color: #ffcc00; /* Fondo amarillo */
-  color: #000; /* Texto negro */
-  text-decoration: none;
-  padding: 0.6rem 1rem;
-  border-radius: 8px; /* Bordes redondeados */
-  font-weight: bold;
-  transition: background-color 0.3s ease;
-}
-
-.popup-button:hover {
-  background-color: #e6b800; /* Cambio de color al pasar el cursor */
-}
-
-/* Responsive Design para Pantallas Pequeñas */
-@media (max-width: 768px) {
-  .popup p {
-    font-size: 0.9rem; /* Tamaño de fuente más pequeño */
-  }
-
-  .popup-button {
-    font-size: 0.8rem; /* Tamaño de fuente más pequeño */
-    padding: 0.5rem 0.8rem; /* Padding reducido */
-  }
-}
-
-/* Botón de cierre */
-.close-button {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 1.5rem;
-  cursor: pointer;
-  color: #000;
-}
-
-.close-button:hover {
-  color: #ffcc00; /* Cambio de color al pasar el cursor */
-}
-
-/* Responsive Design para Pantallas Pequeñas */
-@media (max-width: 768px) {
-  .popup p {
-    font-size: 1rem; /* Tamaño de fuente más pequeño */
-  }
-
-  .popup-button {
-    font-size: 0.9rem; /* Tamaño de fuente más pequeño */
-    padding: 0.6rem 1rem; /* Padding reducido */
-  }
-
-  .popup-content {
-    padding: 1.5rem; /* Padding reducido */
-  }
-}
-
 
 /* Estilo para la ventana modal */
 .modal {
@@ -291,38 +201,6 @@ video::-webkit-media-controls-time-remaining-display {
   display: flex; /* Clase para mostrar la ventana modal */
 }
 
-/* Contenido de la ventana modal */
-.modal-content {
-  background-color: #fff; /* Fondo blanco */
-  color: #000; /* Texto negro */
-  padding: 2rem;
-  border-radius: 12px; /* Bordes redondeados */
-  width: 90%; /* Ancho responsivo */
-  max-width: 600px; /* Ancho máximo */
-  text-align: center;
-  position: relative;
-}
-
-/* Botón de cierre */
-.close-button {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 1.5rem;
-  cursor: pointer;
-  color: #000;
-}
-
-.close-button:hover {
-  color: #ffcc00; /* Cambio de color al pasar el cursor */
-}
-
-/* Iframe dentro de la ventana modal */
-.modal-content iframe {
-  margin-top: 1rem;
-  border: none; /* Sin bordes */
-  border-radius: 8px; /* Bordes redondeados */
-}
 
 /* Botón de Reproducción Personalizado */
 .custom-play-button {
@@ -546,23 +424,3 @@ video::-webkit-media-controls-time-remaining-display {
   opacity: 1; /* Visible cuando se carga */
 }
 
-/* Estilo para el contenedor "Ver más" */
-.view-more-container {
-  display: flex;
-  justify-content: center; /* Centrar horizontalmente */
-  align-items: center; /* Centrar verticalmente */
-  margin-top: 1.5rem; /* Espacio entre las imágenes y el enlace */
-}
-
-/* Estilo para el enlace "Ver más" */
-.view-more-link {
-  text-decoration: none; /* Sin subrayado */
-  color: #ffcc00; /* Color amarillo */
-  font-size: 1rem; /* Tamaño de fuente */
-  font-weight: bold; /* Texto en negrita */
-  transition: color 0.3s ease; /* Transición suave para el color */
-}
-
-.view-more-link:hover {
-  color: #e6b800; /* Cambio de color al pasar el cursor */
-}
