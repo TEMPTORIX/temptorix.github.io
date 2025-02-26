@@ -1,0 +1,123 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  /* Contenedor Principal */
+  .container {
+    text-align: center;
+  }
+  
+  /* Estilo de la Bola de Carga */
+  .loader {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+  }
+  
+  /* Halo Giratorio */
+  .spinner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 4px solid transparent; /* Borde transparente */
+    border-top: 4px solid #ffcc00; /* Borde superior visible */
+    border-radius: 50%; /* Forma circular */
+    animation: spin 1s linear infinite; /* Animación de giro */
+  }
+  
+  /* Círculo Central */
+  .circle {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: conic-gradient(
+      #ffcc00 0%,
+      #ffcc00 100%
+    );
+    animation: countdownAnimation 10s linear forwards;
+  }
+  
+  /* Texto de Cuenta Regresiva */
+  .countdown {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ffffff;
+  }
+  
+  /* Animación del Temporizador */
+  @keyframes countdownAnimation {
+    0% {
+      background: conic-gradient(#ffcc00 0%, #ffcc00 100%);
+    }
+    100% {
+      background: conic-gradient(#ffcc00 0%, #ffcc00 0%);
+    }
+  }
+  
+  /* Animación de Giro (Halo) */
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  /* Mensaje "Espere..." */
+  .message {
+    margin-top: 1rem;
+    font-size: 1.5rem; /* Tamaño más grande */
+    color: #aaa;
+    animation: pulse 1.5s infinite; /* Animación de palpadeo */
+  }
+  
+  /* Animación de Palpadeo */
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .loader {
+      width: 120px;
+      height: 120px;
+    }
+  
+    .countdown {
+      font-size: 1.5rem;
+    }
+  
+    .message {
+      font-size: 1.2rem; /* Ajuste para pantallas pequeñas */
+    }
+  }
+
+
+  
