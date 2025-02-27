@@ -1,6 +1,4 @@
-
 /*---------------------------------------------------------------------------------------------------*/
-
 /* Reset básico */
 * {
     margin: 0;
@@ -17,12 +15,35 @@ body {
     align-items: center;
     height: 100vh;
     overflow: hidden;
+    position: relative; /* Necesario para posicionar elementos absolutos dentro del body */
+}
+
+/* Contenedor de banners */
+.banner-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    z-index: -1; /* Asegura que los banners estén detrás del texto */
+}
+
+.banner-container ins {
+    flex: 0 0 auto;
+    width: 300px; /* Ancho de cada banner */
+    height: 100px; /* Altura de cada banner */
+    margin: auto 0; /* Centra verticalmente los banners */
 }
 
 .loading-screen {
     text-align: center;
     animation: fadeOut 1s ease-in-out forwards;
     animation-delay: 4s; /* Duración de la pantalla de carga */
+    position: relative; /* Asegura que el texto esté encima de los banners */
+    z-index: 1; /* Asegura que el texto esté encima de los banners */
 }
 
 .logo-text {
@@ -39,8 +60,6 @@ body {
     animation: appearFromCorners 1s ease-in-out forwards, fadeInOut 1s ease-in-out infinite;
     animation-delay: calc(0.1s * var(--i)); /* Retardo incremental para cada letra */
 }
-
-
 
 /* Animación de desvanecimiento y reaparición */
 @keyframes fadeInOut {
