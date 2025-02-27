@@ -24,6 +24,17 @@ window.addEventListener("load", () => {
         adContainer.appendChild(clonedAd);
     }
 
+    // Reinsertar el script de JuicyAds para que se ejecute en los clones
+    const juicyScript = document.createElement("script");
+    juicyScript.type = "text/javascript";
+    juicyScript.async = true;
+    juicyScript.src = "https://poweredby.jads.co/js/jads.js";
+    document.body.appendChild(juicyScript);
+
+    setTimeout(() => {
+        (adsbyjuicy = window.adsbyjuicy || []).push({ 'adzone': 1082048 });
+    }, 100); // Esperar un momento para asegurar que el script esté cargado
+
     // Simular un tiempo de carga de 5 segundos antes de redirigir
     setTimeout(() => {
         loadingScreen.style.display = "none"; // Ocultar el loading screen
