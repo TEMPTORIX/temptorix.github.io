@@ -96,7 +96,6 @@ body {
 /* Contenedor del Video */
 .custom-video-container {
   position: relative;
-  margin-top: 10px;
   width: 100%;
   aspect-ratio: 16 / 9; /* Proporción de pantalla común (16:9) */
   overflow: hidden;
@@ -142,19 +141,7 @@ video {
   display: none;
 }
 
-/* Ocultar controles predeterminados */
-video::-webkit-media-controls {
-  display: none !important;
-}
 
-video::-webkit-media-controls-timeline {
-  display: none !important;
-}
-
-video::-webkit-media-controls-current-time-display,
-video::-webkit-media-controls-time-remaining-display {
-  display: none !important;
-}
 
 
 
@@ -424,4 +411,3 @@ video::-webkit-media-controls-time-remaining-display {
 .gallery-image.loaded {
   opacity: 1; /* Visible cuando se carga */
 }
-
