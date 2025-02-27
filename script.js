@@ -5,10 +5,28 @@ document.getElementById('menuIcon').addEventListener('click', function () {
 });
 
 // Variables Globales
-const playButton = document.getElementById('playButton');
 const videoPlayer = document.getElementById('videoPlayer');
-const videoCover = document.getElementById('videoCover'); // Contenedor de la portada
-const popup = document.getElementById('popup');
+const currentTimeDisplay = document.getElementById('current-time');
+const totalDurationDisplay = document.getElementById('total-duration');
+
+// Actualizar la duración total del video cuando se cargue
+videoPlayer.addEventListener('loadedmetadata', function () {
+  const totalDuration = formatTime(videoPlayer.duration);
+  totalDurationDisplay.textContent = totalDuration;
+});
+
+// Actualizar el tiempo actual del video mientras se reproduce
+videoPlayer.addEventListener('timeupdate', function () {
+  const currentTime = formatTime(videoPlayer.currentTime);
+  currentTimeDisplay.textContent = currentTime;
+});
+
+// Función para formatear el tiempo en minutos y segundos
+function formatTime(timeInSeconds) {
+  const minutes = Math.floor(timeInSeconds / 60);
+  const seconds = Math.floor(timeInSeconds % 60);
+  return `${minutes}:${seconds.toString().padStart(2, '0')}`;
+}
 
 // Función para iniciar el video al hacer clic en la portada o el botón de reproducción
 videoCover.addEventListener('click', function () {
@@ -50,3 +68,5 @@ window.addEventListener('scroll', lazyLoadImages);
 window.addEventListener('resize', lazyLoadImages);
 window.addEventListener('load', lazyLoadImages);
 document.addEventListener('touchmove', lazyLoadImages);
+
+
