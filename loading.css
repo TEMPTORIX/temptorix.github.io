@@ -1,0 +1,71 @@
+
+/*---------------------------------------------------------------------------------------------------*/
+
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Playfair Display', serif; /* Fuente elegante */
+    background-color: #1a1a1a; /* Fondo oscuro para un estilo sofisticado */
+    color: #ffffff; /* Texto blanco */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.loading-screen {
+    text-align: center;
+    animation: fadeOut 1s ease-in-out forwards;
+    animation-delay: 4s; /* Duración de la pantalla de carga */
+}
+
+.logo-text {
+    display: flex;
+    gap: 10px;
+}
+
+.letter {
+    font-size: 4rem;
+    font-weight: bold;
+    color: #e91e63; /* Rosa vibrante */
+    text-transform: uppercase;
+    opacity: 0;
+    animation: appearFromCorners 1s ease-in-out forwards, fadeInOut 1s ease-in-out infinite;
+    animation-delay: calc(0.1s * var(--i)); /* Retardo incremental para cada letra */
+}
+
+
+
+/* Animación de desvanecimiento y reaparición */
+@keyframes fadeInOut {
+    0%, 100% {
+        opacity: 0; /* Invisible */
+    }
+    50% {
+        opacity: 1; /* Visible */
+    }
+}
+
+/* Animación de desvanecimiento */
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .letter {
+        font-size: 2.5rem;
+    }
+}
