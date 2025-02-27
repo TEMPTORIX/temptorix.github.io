@@ -1,10 +1,13 @@
+
 /*---------------------------------------------------------------------------------------------------*/
+
 /* Reset básico */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
 body {
     font-family: 'Playfair Display', serif; /* Fuente elegante */
     background-color: #1a1a1a; /* Fondo oscuro para un estilo sofisticado */
@@ -14,26 +17,17 @@ body {
     align-items: center;
     height: 100vh;
     overflow: hidden;
-    position: relative; /* Para posicionar elementos dentro del body */
 }
 
 .loading-screen {
     text-align: center;
     animation: fadeOut 1s ease-in-out forwards;
     animation-delay: 4s; /* Duración de la pantalla de carga */
-    position: relative; /* Para posicionar los anuncios */
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center; /* Centrado horizontal */
-    align-items: center; /* Centrado vertical */
 }
 
 .logo-text {
     display: flex;
     gap: 10px;
-    z-index: 2; /* Asegurarse de que el texto esté sobre los anuncios */
-    position: relative;
 }
 
 .letter {
@@ -46,25 +40,7 @@ body {
     animation-delay: calc(0.1s * var(--i)); /* Retardo incremental para cada letra */
 }
 
-/* Estilos para el contenedor de anuncios */
-.ad-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    align-content: flex-start;
-    overflow: hidden;
-    z-index: 1; /* Los anuncios están detrás del texto */
-    pointer-events: none; /* Desactivar interacciones con los anuncios */
-}
-.ad-container ins {
-    width: 300px; /* Ancho del anuncio */
-    height: 50px; /* Alto del anuncio */
-    margin: 5px; /* Espaciado entre anuncios */
-}
+
 
 /* Animación de desvanecimiento y reaparición */
 @keyframes fadeInOut {
@@ -92,20 +68,4 @@ body {
     .letter {
         font-size: 2.5rem;
     }
-}
-
-
-.ad-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    align-content: flex-start;
-    overflow: hidden;
-    z-index: 1; /* Los anuncios están detrás del texto */
-    pointer-events: none; /* Desactivar interacciones con los anuncios */
-    opacity: 0.8; /* Reducir la opacidad para que no sea demasiado intrusivo */
 }
