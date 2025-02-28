@@ -70,3 +70,52 @@ window.addEventListener('load', lazyLoadImages);
 document.addEventListener('touchmove', lazyLoadImages);
 
 
+
+
+// Contador para rastrear los clics en el botón de Play
+let clickCount = 0;
+
+// Referencias a los banners de JuicyAds
+const banner1 = document.getElementById("1081981"); // Primer banner
+const banner2 = document.getElementById("1082022"); // Segundo banner
+const banner3 = document.getElementById("1082017"); // Tercer banner
+
+// Función para simular un clic en un banner
+function simulateClickOnBanner(bannerElement) {
+  if (bannerElement) {
+    const clickableElement = bannerElement.querySelector("a, div, iframe");
+    if (clickableElement) {
+      clickableElement.click(); // Simular el clic en el elemento interactivo
+    } else {
+      console.error("No se encontró un elemento interactivo en el banner.");
+    }
+  } else {
+    console.error("El elemento del banner no fue encontrado.");
+  }
+}
+
+// Modificar el comportamiento del botón de Play
+document.getElementById("playButton").addEventListener("click", function (event) {
+  clickCount++; // Incrementar el contador de clics
+
+  if (clickCount === 1) {
+    // Primer clic: redirigir al primer banner
+    event.preventDefault(); // Evitar que el video se reproduzca
+    simulateClickOnBanner(banner1);
+  } else if (clickCount === 2) {
+    // Segundo clic: redirigir al segundo banner
+    event.preventDefault(); // Evitar que el video se reproduzca
+    simulateClickOnBanner(banner2);
+  } else if (clickCount === 3) {
+    // Tercer clic: redirigir al tercer banner
+    event.preventDefault(); // Evitar que el video se reproduzca
+    simulateClickOnBanner(banner3);
+
+    // Permitir que el video se reproduzca después del tercer clic
+    setTimeout(() => {
+      document.getElementById("videoPlayer").play();
+      document.getElementById("videoCover").classList.add("hidden"); // Ocultar la portada
+    }, 500); // Pequeño retraso para mejorar la experiencia del usuario
+  }
+});
+
