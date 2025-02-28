@@ -75,22 +75,19 @@ document.addEventListener('touchmove', lazyLoadImages);
 // Contador para rastrear los clics en el botón de Play
 let clickCount = 0;
 
-// Referencias a los banners de JuicyAds
-const banner1 = document.getElementById("1081981"); // Primer banner
-const banner2 = document.getElementById("1082022"); // Segundo banner
-const banner3 = document.getElementById("1082017"); // Tercer banner
-
 // Función para simular un clic en un banner
-function simulateClickOnBanner(bannerElement) {
+function simulateClickOnBanner(bannerId) {
+  const bannerElement = document.getElementById(bannerId);
   if (bannerElement) {
     const clickableElement = bannerElement.querySelector("a, div, iframe");
     if (clickableElement) {
       clickableElement.click(); // Simular el clic en el elemento interactivo
+      console.log(`Clic simulado en el banner ${bannerId}`);
     } else {
-      console.error("No se encontró un elemento interactivo en el banner.");
+      console.error(`No se encontró un elemento interactivo en el banner ${bannerId}.`);
     }
   } else {
-    console.error("El elemento del banner no fue encontrado.");
+    console.error(`El banner con ID ${bannerId} no fue encontrado.`);
   }
 }
 
@@ -101,15 +98,15 @@ document.getElementById("playButton").addEventListener("click", function (event)
   if (clickCount === 1) {
     // Primer clic: redirigir al primer banner
     event.preventDefault(); // Evitar que el video se reproduzca
-    simulateClickOnBanner(banner1);
+    simulateClickOnBanner("1081981"); // ID del primer banner
   } else if (clickCount === 2) {
     // Segundo clic: redirigir al segundo banner
     event.preventDefault(); // Evitar que el video se reproduzca
-    simulateClickOnBanner(banner2);
+    simulateClickOnBanner("1082022"); // ID del segundo banner
   } else if (clickCount === 3) {
     // Tercer clic: redirigir al tercer banner
     event.preventDefault(); // Evitar que el video se reproduzca
-    simulateClickOnBanner(banner3);
+    simulateClickOnBanner("1082017"); // ID del tercer banner
 
     // Permitir que el video se reproduzca después del tercer clic
     setTimeout(() => {
@@ -118,4 +115,3 @@ document.getElementById("playButton").addEventListener("click", function (event)
     }, 500); // Pequeño retraso para mejorar la experiencia del usuario
   }
 });
-
