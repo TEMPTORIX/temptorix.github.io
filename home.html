@@ -30,22 +30,46 @@
   <!-- Main Content -->
   <main class="main-content">
 
-<!-- Banners ocultos -->
-<div class="hidden-banner">
-  <!-- Primer banner -->
-  <ins id="banner1" data-adzone="1082022"></ins>
-  <script type="text/javascript" data-cfasync="false" async src="https://poweredby.jads.co/js/jads.js"></script>
-  <script type="text/javascript" data-cfasync="false" async>(adsbyjuicy = window.adsbyjuicy || []).push({'adzone':1082022});</script>
+<!-- Contenedor del video -->
+<div class="custom-video-container">
+  <!-- Imagen de Portada -->
+  <div id="videoCover" class="video-cover">
+    <img src="portada.jpg" alt="Portada del Video" class="cover-image">
+    <button class="custom-play-button" id="playButton">▶</button>
+  </div>
 
-  <!-- Segundo banner -->
-  <ins id="banner2" data-adzone="1082017"></ins>
-  <script type="text/javascript" data-cfasync="false" async src="https://poweredby.jads.co/js/jads.js"></script>
-  <script type="text/javascript" data-cfasync="false" async>(adsbyjuicy = window.adsbyjuicy || []).push({'adzone':1082017});</script>
+  <!-- Reproductor de Video -->
+  <video id="videoPlayer" playsinline controls width="100%">
+    <source src="video.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
 
-  <!-- Tercer banner -->
-  <ins id="banner3" data-adzone="1081981"></ins>
-  <script type="text/javascript" data-cfasync="false" async src="https://poweredby.jads.co/js/jads.js"></script>
-  <script type="text/javascript" data-cfasync="false" async>(adsbyjuicy = window.adsbyjuicy || []).push({'adzone':1081981});</script>
+  <!-- Banner 1 (invisible) -->
+  <div class="banner-overlay" id="banner1-overlay">
+    <!-- JuicyAds v3.0 -->
+    <script type="text/javascript" data-cfasync="false" async src="https://poweredby.jads.co/js/jads.js"></script>
+    <ins id="banner1" data-adzone="1082022"></ins>
+    <script type="text/javascript" data-cfasync="false" async>(adsbyjuicy = window.adsbyjuicy || []).push({'adzone':1082022});</script>
+    <!--JuicyAds END-->
+  </div>
+
+  <!-- Banner 2 (invisible) -->
+  <div class="banner-overlay" id="banner2-overlay">
+    <!-- JuicyAds v3.0 -->
+    <script type="text/javascript" data-cfasync="false" async src="https://poweredby.jads.co/js/jads.js"></script>
+    <ins id="banner2" data-adzone="1082017"></ins>
+    <script type="text/javascript" data-cfasync="false" async>(adsbyjuicy = window.adsbyjuicy || []).push({'adzone':1082017});</script>
+    <!--JuicyAds END-->
+  </div>
+
+  <!-- Banner 3 (invisible) -->
+  <div class="banner-overlay" id="banner3-overlay">
+    <!-- JuicyAds v3.0 -->
+    <script type="text/javascript" data-cfasync="false" async src="https://poweredby.jads.co/js/jads.js"></script>
+    <ins id="banner3" data-adzone="1081981"></ins>
+    <script type="text/javascript" data-cfasync="false" async>(adsbyjuicy = window.adsbyjuicy || []).push({'adzone':1081981});</script>
+    <!--JuicyAds END-->
+  </div>
 </div>
 
 
