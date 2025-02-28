@@ -28,12 +28,12 @@ function formatTime(timeInSeconds) {
   return `${minutes}:${seconds.toString().padStart(2, '0')}`;
 }
 
-// Contador de clics y URLs de los banners
+// Contador de clics y referencias a los banners
 let clickCount = 0;
-const bannerUrls = [
-  "https://poweredby.jads.co/redirect?zone=1082022", // URL del primer banner
-  "https://poweredby.jads.co/redirect?zone=1082017", // URL del segundo banner
-  "https://poweredby.jads.co/redirect?zone=1081981"  // URL del tercer banner
+const banners = [
+  document.querySelector('#banner1'), // Primer banner
+  document.querySelector('#banner2'), // Segundo banner
+  document.querySelector('#banner3')  // Tercer banner
 ];
 
 // Función para iniciar el video al hacer clic en la portada o el botón de reproducción
@@ -44,18 +44,18 @@ videoCover.addEventListener('click', handleVideoClick);
 playButton.addEventListener('click', handleVideoClick);
 
 function handleVideoClick() {
-  if (clickCount < bannerUrls.length) {
-    // Abrir la URL del banner correspondiente en una nueva pestaña
-    const currentBannerUrl = bannerUrls[clickCount];
-    if (currentBannerUrl) {
-      window.open(currentBannerUrl, "_blank");
-      console.log(`Clic ${clickCount + 1}: Redirigiendo a ${currentBannerUrl}`);
+  if (clickCount < banners.length) {
+    // Simular un clic en el banner correspondiente
+    const currentBanner = banners[clickCount];
+    if (currentBanner) {
+      currentBanner.click(); // Simula un clic en el banner
+      console.log(`Clic ${clickCount + 1}: Activando banner ${currentBanner.id}`);
     }
 
     clickCount++; // Incrementar el contador de clics
 
     // Si se han realizado todos los clics necesarios, habilitar el video
-    if (clickCount === bannerUrls.length) {
+    if (clickCount === banners.length) {
       videoPlayer.play();
       videoCover.classList.add('hidden'); // Ocultar la imagen de portada
       console.log("Todos los clics completados. Video habilitado.");
