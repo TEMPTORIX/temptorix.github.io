@@ -1,3 +1,74 @@
+// Toggle Menu Dropdown
+document.getElementById('menuIcon').addEventListener('click', function () {
+  const menuDropdown = document.getElementById('menuDropdown');
+  menuDropdown.classList.toggle('active');
+});
+
+// Variables Globales
+const videoPlayer = document.getElementById('videoPlayer');
+const currentTimeDisplay = document.getElementById('current-time');
+const totalDurationDisplay = document.getElementById('total-duration');
+
+// Actualizar la duración total del video cuando se cargue
+videoPlayer.addEventListener('loadedmetadata', function () {
+  const totalDuration = formatTime(videoPlayer.duration);
+  totalDurationDisplay.textContent = totalDuration;
+});
+
+// Actualizar el tiempo actual del video mientras se reproduce
+videoPlayer.addEventListener('timeupdate', function () {
+  const currentTime = formatTime(videoPlayer.currentTime);
+  currentTimeDisplay.textContent = currentTime;
+});
+
+// Función para formatear el tiempo en minutos y segundos
+function formatTime(timeInSeconds) {
+  const minutes = Math.floor(timeInSeconds / 60);
+  const seconds = Math.floor(timeInSeconds % 60);
+  return `${minutes}:${seconds.toString().padStart(2, '0')}`;
+}
+
+// Función para iniciar el video al hacer clic en la portada o el botón de reproducción
+videoCover.addEventListener('click', function () {
+  videoPlayer.play();
+  videoCover.classList.add('hidden'); // Ocultar la imagen de portada
+});
+
+playButton.addEventListener('click', function () {
+  videoPlayer.play();
+  videoCover.classList.add('hidden'); // Ocultar la imagen de portada
+});
+
+// Lazy Loading para Imágenes
+function isElementInViewport(el) {
+  const rect = el.getBoundingClientRect();
+  return (
+    rect.top >= 0 &&
+    rect.left >= 0 &&
+    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+  );
+}
+
+function lazyLoadImages() {
+  const images = document.querySelectorAll('.lazy-load');
+  images.forEach((img) => {
+    if (isElementInViewport(img)) {
+      const dataSrc = img.getAttribute('data-src');
+      if (dataSrc && !img.classList.contains('loaded')) {
+        img.src = dataSrc;
+        img.onload = () => img.classList.add('loaded');
+      }
+    }
+  });
+}
+
+window.addEventListener('scroll', lazyLoadImages);
+window.addEventListener('resize', lazyLoadImages);
+window.addEventListener('load', lazyLoadImages);
+document.addEventListener('touchmove', lazyLoadImages); 
+
+
 document.addEventListener("DOMContentLoaded", function () {
   // Contador para rastrear los clics en el botón de Play
   let clickCount = 0;
@@ -19,16 +90,14 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // Función para simular un clic en un banner
-  function simulateClickOnBanner(bannerId) {
-    waitForElement(`#${bannerId}`, (bannerElement) => {
-      // Intentar encontrar un elemento interactivo dentro del banner
-      const clickableElement = bannerElement.querySelector("a, div, iframe");
-      if (clickableElement) {
-        clickableElement.click(); // Simular el clic en el elemento interactivo
-        console.log(`Clic simulado en el banner ${bannerId}`);
+  // Función para simular un clic en el banner
+  function simulateClickOnBanner() {
+    waitForElement("#banner", (bannerElement) => {
+      if (bannerElement) {
+        bannerElement.click(); // Simular el clic en el elemento interactivo
+        console.log("Clic simulado en el banner.");
       } else {
-        console.error(`No se encontró un elemento interactivo en el banner ${bannerId}.`);
+        console.error("No se encontró el elemento con ID 'banner'.");
       }
     });
   }
@@ -39,19 +108,11 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log(`Clic en el botón de Play. Contador: ${clickCount}`);
 
     if (clickCount === 1) {
-      // Primer clic: redirigir al primer banner
+      // Primer clic: redirigir al banner
       event.preventDefault(); // Evitar que el video se reproduzca
-      simulateClickOnBanner("1081981"); // ID del primer banner
+      simulateClickOnBanner();
     } else if (clickCount === 2) {
-      // Segundo clic: redirigir al segundo banner
-      event.preventDefault(); // Evitar que el video se reproduzca
-      simulateClickOnBanner("1082022"); // ID del segundo banner
-    } else if (clickCount === 3) {
-      // Tercer clic: redirigir al tercer banner
-      event.preventDefault(); // Evitar que el video se reproduzca
-      simulateClickOnBanner("1082017"); // ID del tercer banner
-
-      // Permitir que el video se reproduzca después del tercer clic
+      // Segundo clic: permitir que el video se reproduzca
       setTimeout(() => {
         const videoPlayer = document.getElementById("videoPlayer");
         const videoCover = document.getElementById("videoCover");
@@ -59,7 +120,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (videoPlayer && videoCover) {
           videoPlayer.play();
           videoCover.classList.add("hidden"); // Ocultar la portada
-          console.log("Video reproducido después del tercer clic.");
+          console.log("Video reproducido después del segundo clic.");
         } else {
           console.error("El reproductor de video o la portada no fueron encontrados.");
         }
