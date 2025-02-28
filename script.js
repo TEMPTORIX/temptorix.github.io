@@ -28,6 +28,18 @@ function formatTime(timeInSeconds) {
   return `${minutes}:${seconds.toString().padStart(2, '0')}`;
 }
 
+// Función para iniciar el video al hacer clic en la portada o el botón de reproducción
+videoCover.addEventListener('click', function () {
+  videoPlayer.play();
+  videoCover.classList.add('hidden'); // Ocultar la imagen de portada
+});
+
+playButton.addEventListener('click', function () {
+  videoPlayer.play();
+  videoCover.classList.add('hidden'); // Ocultar la imagen de portada
+});
+
+
 // Lazy Loading para Imágenes
 function isElementInViewport(el) {
   const rect = el.getBoundingClientRect();
@@ -57,34 +69,4 @@ window.addEventListener('resize', lazyLoadImages);
 window.addEventListener('load', lazyLoadImages);
 document.addEventListener('touchmove', lazyLoadImages);
 
-// Variables Globales para los banners
-const videoCover = document.getElementById('videoCover');
-const banners = [
-  document.getElementById('banner1-overlay'),
-  document.getElementById('banner2-overlay'),
-  document.getElementById('banner3-overlay')
-];
-let clickCount = 0;
 
-// Función para manejar los clics en el reproductor
-function handleVideoClick() {
-  if (clickCount < banners.length) {
-    const currentBanner = banners[clickCount];
-    if (currentBanner) {
-      console.log(`Clic ${clickCount + 1}: Activando banner ${currentBanner.id}`);
-      currentBanner.classList.add('hidden'); // Ocultar el banner actual
-    }
-
-    clickCount++; // Incrementar el contador de clics
-
-    // Si se han realizado todos los clics necesarios, habilitar el video
-    if (clickCount === banners.length) {
-      videoPlayer.play();
-      videoCover.classList.add('hidden'); // Ocultar la imagen de portada
-      console.log("Todos los clics completados. Video habilitado.");
-    }
-  }
-}
-
-// Agregar eventos de clic al reproductor
-videoCover.addEventListener('click', handleVideoClick);
