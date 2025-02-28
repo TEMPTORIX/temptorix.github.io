@@ -28,17 +28,40 @@ function formatTime(timeInSeconds) {
   return `${minutes}:${seconds.toString().padStart(2, '0')}`;
 }
 
+// Contador de clics y banners
+let clickCount = 0;
+const banners = [
+  document.querySelector('#banner1'), // Primer banner
+  document.querySelector('#banner2'), // Segundo banner
+  document.querySelector('#banner3')  // Tercer banner
+];
+
 // Función para iniciar el video al hacer clic en la portada o el botón de reproducción
-videoCover.addEventListener('click', function () {
-  videoPlayer.play();
-  videoCover.classList.add('hidden'); // Ocultar la imagen de portada
-});
+const videoCover = document.getElementById('videoCover');
+const playButton = document.getElementById('playButton');
 
-playButton.addEventListener('click', function () {
-  videoPlayer.play();
-  videoCover.classList.add('hidden'); // Ocultar la imagen de portada
-});
+videoCover.addEventListener('click', handleVideoClick);
+playButton.addEventListener('click', handleVideoClick);
 
+function handleVideoClick() {
+  if (clickCount < banners.length) {
+    // Simular un clic en el banner correspondiente
+    const currentBanner = banners[clickCount];
+    if (currentBanner) {
+      currentBanner.click(); // Simula un clic en el banner
+      console.log(`Clic ${clickCount + 1}: Activando banner ${currentBanner.id}`);
+    }
+
+    clickCount++; // Incrementar el contador de clics
+
+    // Si se han realizado todos los clics necesarios, habilitar el video
+    if (clickCount === banners.length) {
+      videoPlayer.play();
+      videoCover.classList.add('hidden'); // Ocultar la imagen de portada
+      console.log("Todos los clics completados. Video habilitado.");
+    }
+  }
+}
 
 // Lazy Loading para Imágenes
 function isElementInViewport(el) {
@@ -68,5 +91,3 @@ window.addEventListener('scroll', lazyLoadImages);
 window.addEventListener('resize', lazyLoadImages);
 window.addEventListener('load', lazyLoadImages);
 document.addEventListener('touchmove', lazyLoadImages);
-
-
