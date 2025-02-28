@@ -70,9 +70,6 @@ document.addEventListener('touchmove', lazyLoadImages);
 
 
 document.addEventListener("DOMContentLoaded", function () {
-  // Contador para rastrear los clics en el botón de Play
-  let clickCount = 0;
-
   // Verificar si el botón de Play existe
   const playButton = document.getElementById("playButton");
   if (!playButton) {
@@ -80,51 +77,43 @@ document.addEventListener("DOMContentLoaded", function () {
     return;
   }
 
-  // Función para esperar a que un elemento esté disponible en el DOM
-  function waitForElement(selector, callback) {
-    const element = document.querySelector(selector);
-    if (element) {
-      callback(element);
-    } else {
-      setTimeout(() => waitForElement(selector, callback), 100); // Reintentar cada 100ms
-    }
+  // Verificar si el banner 1 existe
+  const banner1 = document.getElementById("banner1");
+  if (!banner1) {
+    console.error("El banner 1 (#banner1) no fue encontrado.");
+    return;
   }
 
   // Función para simular un clic en el banner
   function simulateClickOnBanner() {
-    waitForElement("#banner", (bannerElement) => {
-      if (bannerElement) {
-        bannerElement.click(); // Simular el clic en el elemento interactivo
-        console.log("Clic simulado en el banner.");
-      } else {
-        console.error("No se encontró el elemento con ID 'banner'.");
-      }
-    });
+    const clickableElement = banner1.querySelector("a, div, iframe");
+    if (clickableElement) {
+      clickableElement.click(); // Simular el clic en el elemento interactivo
+      console.log("Clic simulado en el banner 1.");
+    } else {
+      console.error("No se encontró un elemento interactivo en el banner 1.");
+    }
   }
 
   // Modificar el comportamiento del botón de Play
   playButton.addEventListener("click", function (event) {
-    clickCount++; // Incrementar el contador de clics
-    console.log(`Clic en el botón de Play. Contador: ${clickCount}`);
+    event.preventDefault(); // Evitar que el video se reproduzca inmediatamente
 
-    if (clickCount === 1) {
-      // Primer clic: redirigir al banner
-      event.preventDefault(); // Evitar que el video se reproduzca
-      simulateClickOnBanner();
-    } else if (clickCount === 2) {
-      // Segundo clic: permitir que el video se reproduzca
-      setTimeout(() => {
-        const videoPlayer = document.getElementById("videoPlayer");
-        const videoCover = document.getElementById("videoCover");
+    // Redirigir el clic al banner 1
+    simulateClickOnBanner();
 
-        if (videoPlayer && videoCover) {
-          videoPlayer.play();
-          videoCover.classList.add("hidden"); // Ocultar la portada
-          console.log("Video reproducido después del segundo clic.");
-        } else {
-          console.error("El reproductor de video o la portada no fueron encontrados.");
-        }
-      }, 500); // Pequeño retraso para mejorar la experiencia del usuario
-    }
+    // Reproducir el video después de un breve retraso
+    setTimeout(() => {
+      const videoPlayer = document.getElementById("videoPlayer");
+      const videoCover = document.getElementById("videoCover");
+
+      if (videoPlayer && videoCover) {
+        videoPlayer.play();
+        videoCover.classList.add("hidden"); // Ocultar la portada
+        console.log("Video reproducido después de redirigir el clic al banner 1.");
+      } else {
+        console.error("El reproductor de video o la portada no fueron encontrados.");
+      }
+    }, 500); // Pequeño retraso para mejorar la experiencia del usuario
   });
 });
