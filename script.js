@@ -31,9 +31,9 @@ function formatTime(timeInSeconds) {
 // Contador de clics y URLs de los banners
 let clickCount = 0;
 const bannerUrls = [
-  "https://example.com/banner1", // URL del primer banner (reemplaza con la URL real)
-  "https://example.com/banner2", // URL del segundo banner (reemplaza con la URL real)
-  "https://example.com/banner3"  // URL del tercer banner (reemplaza con la URL real)
+  "https://poweredby.jads.co/redirect?zone=1082022", // URL del primer banner
+  "https://poweredby.jads.co/redirect?zone=1082017", // URL del segundo banner
+  "https://poweredby.jads.co/redirect?zone=1081981"  // URL del tercer banner
 ];
 
 // Función para iniciar el video al hacer clic en la portada o el botón de reproducción
