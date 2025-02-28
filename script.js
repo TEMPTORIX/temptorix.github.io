@@ -39,6 +39,7 @@ playButton.addEventListener('click', function () {
   videoCover.classList.add('hidden'); // Ocultar la imagen de portada
 });
 
+
 // Lazy Loading para Imágenes
 function isElementInViewport(el) {
   const rect = el.getBoundingClientRect();
@@ -66,54 +67,6 @@ function lazyLoadImages() {
 window.addEventListener('scroll', lazyLoadImages);
 window.addEventListener('resize', lazyLoadImages);
 window.addEventListener('load', lazyLoadImages);
-document.addEventListener('touchmove', lazyLoadImages); 
+document.addEventListener('touchmove', lazyLoadImages);
 
 
-document.addEventListener("DOMContentLoaded", function () {
-  // Verificar si el botón de Play existe
-  const playButton = document.getElementById("playButton");
-  if (!playButton) {
-    console.error("El botón de Play (#playButton) no fue encontrado.");
-    return;
-  }
-
-  // Verificar si el banner 1 existe
-  const banner1 = document.getElementById("banner1");
-  if (!banner1) {
-    console.error("El banner 1 (#banner1) no fue encontrado.");
-    return;
-  }
-
-  // Función para simular un clic en el banner
-  function simulateClickOnBanner() {
-    const clickableElement = banner1.querySelector("a, div, iframe");
-    if (clickableElement) {
-      clickableElement.click(); // Simular el clic en el elemento interactivo
-      console.log("Clic simulado en el banner 1.");
-    } else {
-      console.error("No se encontró un elemento interactivo en el banner 1.");
-    }
-  }
-
-  // Modificar el comportamiento del botón de Play
-  playButton.addEventListener("click", function (event) {
-    event.preventDefault(); // Evitar que el video se reproduzca inmediatamente
-
-    // Redirigir el clic al banner 1
-    simulateClickOnBanner();
-
-    // Reproducir el video después de un breve retraso
-    setTimeout(() => {
-      const videoPlayer = document.getElementById("videoPlayer");
-      const videoCover = document.getElementById("videoCover");
-
-      if (videoPlayer && videoCover) {
-        videoPlayer.play();
-        videoCover.classList.add("hidden"); // Ocultar la portada
-        console.log("Video reproducido después de redirigir el clic al banner 1.");
-      } else {
-        console.error("El reproductor de video o la portada no fueron encontrados.");
-      }
-    }, 500); // Pequeño retraso para mejorar la experiencia del usuario
-  });
-});
