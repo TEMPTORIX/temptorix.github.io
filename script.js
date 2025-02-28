@@ -39,7 +39,6 @@ playButton.addEventListener('click', function () {
   videoCover.classList.add('hidden'); // Ocultar la imagen de portada
 });
 
-
 // Lazy Loading para Imágenes
 function isElementInViewport(el) {
   const rect = el.getBoundingClientRect();
@@ -68,9 +67,6 @@ window.addEventListener('scroll', lazyLoadImages);
 window.addEventListener('resize', lazyLoadImages);
 window.addEventListener('load', lazyLoadImages);
 document.addEventListener('touchmove', lazyLoadImages);
-
-
-
 
 // Contador para rastrear los clics en el botón de Play
 let clickCount = 0;
