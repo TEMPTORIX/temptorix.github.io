@@ -6,8 +6,8 @@ document.getElementById('menuIcon').addEventListener('click', function () {
 
 // Variables Globales
 const videoPlayer = document.getElementById('videoPlayer');
-const currentTimeDisplay = document.getElementById('current-time');
-const totalDurationDisplay = document.getElementById('total-duration');
+const videoCover = document.getElementById('videoCover');
+const playButton = document.getElementById('playButton');
 
 // Configuración de JSONBin.io
 const BIN_URL = "https://api.jsonbin.io/v3/b/67c486b5acd3cb34a8f3abd9"; // URL del bin
@@ -53,29 +53,9 @@ async function incrementVisits() {
   }
 }
 
-// Actualizar la duración total del video cuando se cargue
-videoPlayer.addEventListener('loadedmetadata', function () {
-  const totalDuration = formatTime(videoPlayer.duration);
-  totalDurationDisplay.textContent = totalDuration;
-});
-
-// Actualizar el tiempo actual del video mientras se reproduce
-videoPlayer.addEventListener('timeupdate', function () {
-  const currentTime = formatTime(videoPlayer.currentTime);
-  currentTimeDisplay.textContent = currentTime;
-});
-
-// Función para formatear el tiempo en minutos y segundos
-function formatTime(timeInSeconds) {
-  const minutes = Math.floor(timeInSeconds / 60);
-  const seconds = Math.floor(timeInSeconds % 60);
-  return `${minutes}:${seconds.toString().padStart(2, '0')}`;
-}
-
 // Mostrar las visitas cuando la página carga
 document.addEventListener("DOMContentLoaded", async () => {
   const viewCountElement = document.getElementById("viewCount"); // Elemento donde se muestran las visitas
-  const playButton = document.getElementById("playButton");
 
   // Obtener y mostrar el número actual de visitas
   const visits = await getVisits();
@@ -88,5 +68,44 @@ document.addEventListener("DOMContentLoaded", async () => {
     viewCountElement.textContent = `${newVisits} views`; // Actualiza el texto
   });
 
-  // Ocultar la imagen de portada y reproducir el video
-  const videoCover = document.getElementById("videoCover");
+  // Reproducir el video al hacer clic en el botón de reproducción
+  playButton.addEventListener('click', function () {
+    videoPlayer.play();
+    videoCover.classList.add('hidden'); // Ocultar la imagen de portada
+  });
+
+  // Reproducir el video al hacer clic en la imagen de portada
+  videoCover.addEventListener('click', function () {
+    videoPlayer.play();
+    videoCover.classList.add('hidden'); // Ocultar la imagen de portada
+  });
+});
+
+// Lazy Loading para Imágenes
+function isElementInViewport(el) {
+  const rect = el.getBoundingClientRect();
+  return (
+    rect.top >= 0 &&
+    rect.left >= 0 &&
+    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+  );
+}
+
+function lazyLoadImages() {
+  const images = document.querySelectorAll('.lazy-load');
+  images.forEach((img) => {
+    if (isElementInViewport(img)) {
+      const dataSrc = img.getAttribute('data-src');
+      if (dataSrc && !img.classList.contains('loaded')) {
+        img.src = dataSrc;
+        img.onload = () => img.classList.add('loaded');
+      }
+    }
+  });
+}
+
+window.addEventListener('scroll', lazyLoadImages);
+window.addEventListener('resize', lazyLoadImages);
+window.addEventListener('load', lazyLoadImages);
+document.addEventListener('touchmove', lazyLoadImages);
