@@ -9,6 +9,50 @@ const videoPlayer = document.getElementById('videoPlayer');
 const currentTimeDisplay = document.getElementById('current-time');
 const totalDurationDisplay = document.getElementById('total-duration');
 
+// Configuración de JSONBin.io
+const BIN_URL = "https://api.jsonbin.io/v3/b/67c486b5acd3cb34a8f3abd9"; // URL del bin
+const SECRET_KEY = "$2a$10$7AAShAcznvVzanv4tgOsj.me3QsqDU75x8wllUwVRjPrwVWUNyn0q"; // Tu X-Master-Key
+
+// Función para obtener el número de visitas
+async function getVisits() {
+  try {
+    const response = await fetch(BIN_URL, {
+      method: "GET",
+      headers: {
+        "X-Master-Key": SECRET_KEY,
+      },
+    });
+    if (!response.ok) {
+      throw new Error(`Error al obtener las visitas: ${response.status}`);
+    }
+    const data = await response.json();
+    return data.record.visits || 0; // Devuelve el valor actual de "visits"
+  } catch (error) {
+    console.error("Error al obtener las visitas:", error);
+    return 0;
+  }
+}
+
+// Función para incrementar el número de visitas
+async function incrementVisits() {
+  try {
+    const currentVisits = await getVisits(); // Obtiene el número actual de visitas
+    const response = await fetch(BIN_URL, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Master-Key": SECRET_KEY,
+      },
+      body: JSON.stringify({ visits: currentVisits + 1 }), // Incrementa el contador
+    });
+    if (!response.ok) {
+      throw new Error(`Error al incrementar las visitas: ${response.status}`);
+    }
+  } catch (error) {
+    console.error("Error al incrementar las visitas:", error);
+  }
+}
+
 // Actualizar la duración total del video cuando se cargue
 videoPlayer.addEventListener('loadedmetadata', function () {
   const totalDuration = formatTime(videoPlayer.duration);
@@ -28,45 +72,21 @@ function formatTime(timeInSeconds) {
   return `${minutes}:${seconds.toString().padStart(2, '0')}`;
 }
 
-// Función para iniciar el video al hacer clic en la portada o el botón de reproducción
-videoCover.addEventListener('click', function () {
-  videoPlayer.play();
-  videoCover.classList.add('hidden'); // Ocultar la imagen de portada
-});
+// Mostrar las visitas cuando la página carga
+document.addEventListener("DOMContentLoaded", async () => {
+  const viewCountElement = document.getElementById("viewCount"); // Elemento donde se muestran las visitas
+  const playButton = document.getElementById("playButton");
 
-playButton.addEventListener('click', function () {
-  videoPlayer.play();
-  videoCover.classList.add('hidden'); // Ocultar la imagen de portada
-});
+  // Obtener y mostrar el número actual de visitas
+  const visits = await getVisits();
+  viewCountElement.textContent = `${visits} views`;
 
-
-// Lazy Loading para Imágenes
-function isElementInViewport(el) {
-  const rect = el.getBoundingClientRect();
-  return (
-    rect.top >= 0 &&
-    rect.left >= 0 &&
-    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-  );
-}
-
-function lazyLoadImages() {
-  const images = document.querySelectorAll('.lazy-load');
-  images.forEach((img) => {
-    if (isElementInViewport(img)) {
-      const dataSrc = img.getAttribute('data-src');
-      if (dataSrc && !img.classList.contains('loaded')) {
-        img.src = dataSrc;
-        img.onload = () => img.classList.add('loaded');
-      }
-    }
+  // Incrementar las visitas cuando se reproduce el video
+  playButton.addEventListener("click", async () => {
+    await incrementVisits(); // Incrementa las visitas
+    const newVisits = await getVisits(); // Obtiene el nuevo valor
+    viewCountElement.textContent = `${newVisits} views`; // Actualiza el texto
   });
-}
 
-window.addEventListener('scroll', lazyLoadImages);
-window.addEventListener('resize', lazyLoadImages);
-window.addEventListener('load', lazyLoadImages);
-document.addEventListener('touchmove', lazyLoadImages);
-
-
+  // Ocultar la imagen de portada y reproducir el video
+  const videoCover = document.getElementById("videoCover");
