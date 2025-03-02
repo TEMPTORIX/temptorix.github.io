@@ -62,22 +62,39 @@ document.addEventListener("DOMContentLoaded", async () => {
   viewCountElement.textContent = `${visits} views`;
 
   // Incrementar las visitas cuando se reproduce el video
-  playButton.addEventListener("click", async () => {
+  const handleVideoPlay = async () => {
     await incrementVisits(); // Incrementa las visitas
     const newVisits = await getVisits(); // Obtiene el nuevo valor
     viewCountElement.textContent = `${newVisits} views`; // Actualiza el texto
+  };
+
+  // Asegurarse de que las visitas solo se incrementen una vez por sesión
+  let hasIncrementedVisits = false;
+
+  playButton.addEventListener("click", async () => {
+    if (!hasIncrementedVisits) {
+      await handleVideoPlay();
+      hasIncrementedVisits = true; // Marcar como incrementado
+    }
+  });
+
+  videoCover.addEventListener("click", async () => {
+    if (!hasIncrementedVisits) {
+      await handleVideoPlay();
+      hasIncrementedVisits = true; // Marcar como incrementado
+    }
   });
 
   // Reproducir el video al hacer clic en el botón de reproducción
-  playButton.addEventListener('click', function () {
+  playButton.addEventListener("click", () => {
     videoPlayer.play();
-    videoCover.classList.add('hidden'); // Ocultar la imagen de portada
+    videoCover.classList.add("hidden"); // Ocultar la imagen de portada
   });
 
   // Reproducir el video al hacer clic en la imagen de portada
-  videoCover.addEventListener('click', function () {
+  videoCover.addEventListener("click", () => {
     videoPlayer.play();
-    videoCover.classList.add('hidden'); // Ocultar la imagen de portada
+    videoCover.classList.add("hidden"); // Ocultar la imagen de portada
   });
 });
 
