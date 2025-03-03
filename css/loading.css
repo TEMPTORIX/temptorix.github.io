@@ -1,0 +1,102 @@
+/*---------------------------------------------------------------------------------------------------*/
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Playfair Display', serif; /* Fuente elegante */
+    background-color: #1a1a1a; /* Fondo oscuro para un estilo sofisticado */
+    color: #ffffff; /* Texto blanco */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    position: relative; /* Necesario para posicionar elementos absolutos dentro del body */
+}
+
+/* Contenedor principal */
+.banner-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around; /* Distribuye las filas uniformemente */
+    align-items: center;
+    z-index: -1; /* Asegura que los banners estén detrás del texto */
+}
+
+/* Filas de banners */
+.banner-row {
+    display: flex;
+    gap: 20px; /* Espacio entre los banners */
+    justify-content: center; /* Centra los banners horizontalmente */
+}
+
+/* Fila con un solo banner centrado */
+.banner-row.centered {
+    justify-content: center;
+}
+
+/* Estilo de los banners */
+.banner-row ins {
+    width: 300px; /* Ancho de cada banner */
+    height: 100px; /* Altura de cada banner */
+}
+
+.loading-screen {
+    text-align: center;
+    animation: fadeOut 1s ease-in-out forwards;
+    animation-delay: 4s; /* Duración de la pantalla de carga */
+    position: relative; /* Asegura que el texto esté encima de los banners */
+    z-index: 1; /* Asegura que el texto esté encima de los banners */
+}
+
+.logo-text {
+    display: flex;
+    gap: 10px;
+}
+
+.letter {
+    font-size: 4rem;
+    font-weight: bold;
+    color: #e91e63; /* Rosa vibrante */
+    text-transform: uppercase;
+    opacity: 0;
+    animation: appearFromCorners 1s ease-in-out forwards, fadeInOut 1s ease-in-out infinite;
+    animation-delay: calc(0.1s * var(--i)); /* Retardo incremental para cada letra */
+}
+
+/* Animación de desvanecimiento y reaparición */
+@keyframes fadeInOut {
+    0%, 100% {
+        opacity: 0; /* Invisible */
+    }
+    50% {
+        opacity: 1; /* Visible */
+    }
+}
+
+/* Animación de desvanecimiento */
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .letter {
+        font-size: 2.5rem;
+    }
+}
