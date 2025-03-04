@@ -16,7 +16,7 @@ window.addEventListener("load", () => {
       loadingScreen.style.display = "none"; // Ocultar el loading screen
   
       // Redirigir a Trapped together in a Wooden Hut FERN x STARK need to Warm Up HE.html
-      const targetPage = "Trapped together in a Wooden Hut FERN x STARK need to Warm Up HE.html"; // Asegúrate de que esta ruta sea correcta
+      const targetPage = "Trapped-together-in-a-Wooden-Hut-FERN-x-STARK-need-to-Warm-Up-HE.html"; // Asegúrate de que esta ruta sea correcta
       if (targetPage) {
         window.location.href = targetPage;
       } else {
