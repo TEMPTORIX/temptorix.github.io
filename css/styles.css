@@ -411,3 +411,23 @@ video {
 .gallery-image.loaded {
   opacity: 1; /* Visible cuando se carga */
 }
+
+/* Estilo para el banner in-video */
+.invideo-banner {
+  position: absolute;
+  bottom: 20px; /* Distancia desde la parte inferior */
+  right: 20px; /* Distancia desde el lado derecho */
+  z-index: 10; /* Asegura que esté sobre el video pero debajo de la portada inicial */
+  width: 300px; /* Ancho del banner */
+  height: 250px; /* Altura del banner */
+}
+
+/* Ajuste responsivo para móviles */
+@media (max-width: 768px) {
+  .invideo-banner {
+    width: 200px; /* Reducción del tamaño en móviles */
+    height: auto; /* Mantener proporción */
+    bottom: 10px; /* Menor margen en móviles */
+    right: 10px; /* Menor margen en móviles */
+  }
+}
