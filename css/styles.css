@@ -407,6 +407,9 @@ video {
   opacity: 0; /* Inicialmente ocultas */
   transition: opacity 0.5s ease; /* Animación suave al aparecer */
 }
+.gallery-image.loaded {
+  opacity: 1; /* Visible cuando se carga */
+}
 
 
 
@@ -426,9 +429,6 @@ video {
   display: block; /* Asegura que el anuncio sea tratado como un bloque */
   margin: 0 auto; /* Centra el anuncio dentro del contenedor */
   text-align: center; /* Asegura que el contenido interno esté centrado */
-}
-.gallery-image.loaded {
-  opacity: 1; /* Visible cuando se carga */
 }
 
 
