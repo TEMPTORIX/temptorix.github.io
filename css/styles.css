@@ -419,7 +419,7 @@ video {
 .centered-ad {
   display: flex;
   justify-content: center; /* Centra horizontalmente */
-  align-items: center; /* Alinea verticalmente (opcional si hay más contenido) */
+  align-items: center; /* Alinea verticalmente */
   margin: 1rem auto; /* Espacio superior e inferior */
   width: 100%; /* Ocupa todo el ancho disponible */
   max-width: 800px; /* Limita el ancho máximo para pantallas grandes */
@@ -429,6 +429,7 @@ video {
   display: block; /* Asegura que el anuncio sea tratado como un bloque */
   margin: 0 auto; /* Centra el anuncio dentro del contenedor */
   text-align: center; /* Asegura que el contenido interno esté centrado */
+  width: 300px; /* Ancho fijo del anuncio */
+  height: 100px; /* Altura fija del anuncio */
 }
-
 
