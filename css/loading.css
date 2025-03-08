@@ -1,6 +1,3 @@
-
-/*---------------------------------------------------------------------------------------------------*/
-
 /* Reset básico */
 * {
     margin: 0;
@@ -8,64 +5,69 @@
     box-sizing: border-box;
 }
 
+/* Contenedor principal */
 body {
-    font-family: 'Playfair Display', serif; /* Fuente elegante */
-    background-color: #1a1a1a; /* Fondo oscuro para un estilo sofisticado */
-    color: #ffffff; /* Texto blanco */
+    background-color: #000000;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
     overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-.loading-screen {
+.container {
     text-align: center;
-    animation: fadeOut 1s ease-in-out forwards;
-    animation-delay: 4s; /* Duración de la pantalla de carga */
-}
-
-.logo-text {
+    max-width: 100%;
+    width: 100%; /* Asegura que ocupe todo el ancho disponible */
     display: flex;
-    gap: 10px;
+    flex-direction: column; /* Alinea elementos verticalmente */
+    justify-content: center; /* Centra verticalmente */
+    align-items: center; /* Centra horizontalmente */
 }
 
-.letter {
-    font-size: 4rem;
+/* Contenedor del banner */
+.banner-container {
+    margin-bottom: 20px;
+    max-width: 308px; /* Ancho del banner */
+    width: 100%;
+}
+
+/* Estilos del botón */
+#countdownBtn {
+    width: 90%; /* Usa un porcentaje para adaptarse al ancho de la pantalla */
+    max-width: 250px; /* Límite máximo para pantallas grandes */
+    height: auto; /* Altura automática basada en el contenido */
+    padding: 15px; /* Espaciado interno para el texto */
+    background-color: #000000;
+    border: 2px solid #FFFFFF;
+    border-radius: 5px;
+    color: #FFFFFF;
+    font-size: clamp(14px, 5vw, 18px); /* Tamaño de fuente adaptable */
     font-weight: bold;
-    color: #e91e63; /* Rosa vibrante */
-    text-transform: uppercase;
-    opacity: 0;
-    animation: appearFromCorners 1s ease-in-out forwards, fadeInOut 1s ease-in-out infinite;
-    animation-delay: calc(0.1s * var(--i)); /* Retardo incremental para cada letra */
+    cursor: not-allowed;
+    transition: all 0.3s ease;
+    display: flex; /* Añadido para centrar contenido */
+    justify-content: center; /* Centrado horizontal */
+    align-items: center; /* Centrado vertical */
 }
 
-
-
-/* Animación de desvanecimiento y reaparición */
-@keyframes fadeInOut {
-    0%, 100% {
-        opacity: 0; /* Invisible */
-    }
-    50% {
-        opacity: 1; /* Visible */
-    }
+#countdownBtn:hover {
+    background-color: #222222;
 }
 
-/* Animación de desvanecimiento */
-@keyframes fadeOut {
-    0% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-        visibility: hidden;
-    }
+.countdown-text {
+    transition: color 0.5s;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .letter {
-        font-size: 2.5rem;
+/* Responsive design */
+@media (max-width: 600px) {
+    #countdownBtn {
+        font-size: clamp(12px, 5vw, 16px); /* Ajuste de fuente para móviles */
+        padding: 10px; /* Reducción del espaciado en móviles */
+    }
+
+    .banner-container {
+        margin-bottom: 10px;
     }
 }
