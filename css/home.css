@@ -254,42 +254,6 @@
   background-color: #FFD700; /* Amarillo brillante */
 }
 
-/* Estilos para el texto "ROTACION CON KALEA" */
-.bottom-text {
-  position: absolute;
-  bottom: 6rem; /* Movemos el texto más arriba para hacerlo más notable */
-  left: 50%; /* Centramos horizontalmente */
-  transform: translateX(-50%); /* Centrado perfecto */
-  padding: 1rem 3rem; /* Aumentamos el padding para hacer el fondo más grande */
-  background-color: rgba(0, 4, 248, 0.7); /* Fondo semi-transparente (un poco más opaco) */
-  border-radius: 20px; /* Bordes redondeados */
-  z-index: 2; /* Aseguramos que el texto esté por encima de las imágenes */
-  max-width: 90%; /* Ampliamos el ancho máximo para ocupar más espacio */
-  white-space: nowrap; /* Evitamos que el texto se rompa en varias líneas */
-  box-sizing: border-box; /* Asegura que el padding no cause problemas */
-}
-
-
-.bottom-text p {
-  font-family: 'Arial', sans-serif;
-  font-size: 1rem; /* Tamaño base del texto */
-  font-weight: bold;
-  color: #fff; /* Texto blanco */
-  margin: 0; /* Eliminamos márgenes adicionales */
-}
-
-/* Media Query para pantallas pequeñas */
-@media (max-width: 600px) {
-  .bottom-text {
-    padding: 0.3rem 1rem; /* Reducimos el padding para pantallas pequeñas */
-    bottom: 3rem; /* Movemos el texto un poco más arriba */
-  }
-
-  .bottom-text p {
-    font-size: 0.9rem; /* Reducimos el tamaño del texto */
-  }
-}
-
 
 
 /* Estilos para la sección del ecosistema */
