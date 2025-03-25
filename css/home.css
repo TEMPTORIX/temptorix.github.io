@@ -550,7 +550,7 @@
 .social-icons {
   display: flex;
   gap: 1rem;
-  margin-top: 1rem;
+  margin-top: 0rem;
 }
 
 .social-icon {
@@ -560,7 +560,7 @@
 
 /* Estilo para el logotipo inferior */
 .footer-logo {
-  margin-top: 2rem;
+  margin-top: 0rem;
   text-align: center;
 }
 
