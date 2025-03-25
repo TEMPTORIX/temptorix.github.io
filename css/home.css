@@ -212,12 +212,11 @@
     overflow-x: auto; /* Habilita el scroll horizontal */
     scroll-snap-type: x mandatory; /* Asegura que los slides se alineen correctamente */
     -webkit-overflow-scrolling: touch; /* Mejora el scroll en dispositivos iOS */
+    scrollbar-width: none; /* Oculta la barra de desplazamiento en navegadores modernos */
 }
 
-.slide {
-    flex-shrink: 0; /* Evita que los slides se contraigan */
-    scroll-snap-align: start; /* Alinea los slides al inicio durante el scroll */
-    min-width: 100%; /* Cada slide ocupa el ancho completo del contenedor */
+.slides::-webkit-scrollbar {
+    display: none; /* Oculta la barra de desplazamiento en navegadores basados en WebKit */
 }
 
 .slide img {
