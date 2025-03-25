@@ -209,14 +209,21 @@
 }
 
 .slides {
-  display: flex;
-  transition: transform 0.5s ease-in-out;
+    display: flex;
+    overflow-x: auto; /* Habilita el scroll horizontal */
+    scroll-snap-type: x mandatory; /* Asegura que los slides se alineen correctamente */
+    -webkit-overflow-scrolling: touch; /* Mejora el scroll en dispositivos iOS */
+    scrollbar-width: none; /* Oculta la barra de desplazamiento en navegadores modernos */
+}
+
+.slides::-webkit-scrollbar {
+    display: none; /* Oculta la barra de desplazamiento en navegadores basados en WebKit */
 }
 
 .slide {
-  min-width: 100%;
-  position: relative; /* Habilita la posición relativa para los hijos */
-  transition: opacity 0.5s ease-in-out;
+    min-width: 100%;
+    flex-shrink: 0; /* Evita que los slides se contraigan */
+    scroll-snap-align: start; /* Alinea los slides al inicio durante el scroll */
 }
 
 .slide img {
