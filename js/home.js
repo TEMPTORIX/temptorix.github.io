@@ -90,9 +90,7 @@ dots.forEach((dot, index) => {
 // Inicializar el slider mostrando el primer slide
 showSlide(currentSlide);
 
-// Variables para el arrastre
-let isVerticalScroll = false;
-
+// Función para iniciar el arrastre
 function startDrag(e) {
     isDragging = true;
     startX = e.pageX || e.touches[0].pageX; // Posición inicial del mouse/touch
@@ -111,6 +109,7 @@ function startDrag(e) {
     }
 }
 
+// Función para manejar el arrastre
 function drag(e) {
     if (!isDragging || isVerticalScroll) return; // Si no estamos arrastrando o es scroll vertical, salir
     e.preventDefault();
@@ -119,6 +118,7 @@ function drag(e) {
     slidesContainer.scrollLeft = scrollLeft - walk; // Actualiza el scroll
 }
 
+// Función para detener el arrastre
 function stopDrag(e) {
     isDragging = false;
     slidesContainer.style.cursor = 'grab'; // Restaura el cursor
