@@ -23,7 +23,9 @@ const dots = document.querySelectorAll('.dot');
 let currentSlide = 0;
 let isDragging = false;
 let startX = 0;
+let startY = 0; // Variable para detectar movimiento vertical
 let scrollLeft = 0;
+let isVerticalScroll = false;
 
 // Intervalo automático
 let autoSlideInterval;
@@ -88,42 +90,55 @@ dots.forEach((dot, index) => {
 // Inicializar el slider mostrando el primer slide
 showSlide(currentSlide);
 
-// Función para iniciar el arrastre
+// Variables para el arrastre
+let isVerticalScroll = false;
+
 function startDrag(e) {
     isDragging = true;
     startX = e.pageX || e.touches[0].pageX; // Posición inicial del mouse/touch
+    startY = e.pageY || e.touches[0].pageY; // Posición inicial vertical
     scrollLeft = slidesContainer.scrollLeft; // Posición inicial del scroll
     slidesContainer.style.cursor = 'grabbing'; // Cambia el cursor
+
+    // Detectar si el movimiento inicial es vertical
+    document.addEventListener('touchmove', detectVerticalScroll);
+    function detectVerticalScroll(e) {
+        const deltaY = Math.abs((e.pageY || e.touches[0].pageY) - startY);
+        if (deltaY > 10) { // Umbral para detectar scroll vertical
+            isVerticalScroll = true;
+            stopDrag();
+        }
+    }
 }
 
-// Función para manejar el arrastre
 function drag(e) {
-    if (!isDragging) return; // Si no estamos arrastrando, salir
+    if (!isDragging || isVerticalScroll) return; // Si no estamos arrastrando o es scroll vertical, salir
     e.preventDefault();
     const x = e.pageX || e.touches[0].pageX; // Posición actual del mouse/touch
     const walk = (x - startX) * 2; // Distancia recorrida
     slidesContainer.scrollLeft = scrollLeft - walk; // Actualiza el scroll
 }
 
-// Función para detener el arrastre
 function stopDrag(e) {
     isDragging = false;
     slidesContainer.style.cursor = 'grab'; // Restaura el cursor
+    document.removeEventListener('touchmove', detectVerticalScroll);
 
-    // Detectar hacia dónde se deslizó y cambiar al siguiente/previo slide
-    const endX = e.pageX || e.changedTouches[0].pageX;
-    const threshold = 50; // Umbral mínimo para detectar el deslizamiento
+    if (!isVerticalScroll) {
+        const endX = e.pageX || e.changedTouches[0].pageX;
+        const threshold = 50;
 
-    if (startX - endX > threshold) {
-        // Deslizamiento hacia la izquierda: avanza al siguiente slide
-        nextSlide();
-    } else if (endX - startX > threshold) {
-        // Deslizamiento hacia la derecha: retrocede al slide anterior
-        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-        showSlide(currentSlide);
+        if (startX - endX > threshold) {
+            // Deslizamiento hacia la izquierda: avanza al siguiente slide
+            nextSlide();
+        } else if (endX - startX > threshold) {
+            // Deslizamiento hacia la derecha: retrocede al slide anterior
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
     }
 
-    // Pausar el slider automático después de interactuar manualmente
+    isVerticalScroll = false; // Restablecer el estado
     pauseAutoSlide();
 }
 
