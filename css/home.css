@@ -202,9 +202,10 @@
 
 
 /* Estilos generales para el slider */
+/* Asegura que el contenedor principal permita el scroll vertical */
 .image-slider {
-  position: relative;
-  overflow: hidden;
+    overflow-y: visible; /* Permite el scroll vertical fuera del slider */
+    touch-action: pan-y; /* Habilita el scroll vertical en dispositivos táctiles */
 }
 
 .slides {
