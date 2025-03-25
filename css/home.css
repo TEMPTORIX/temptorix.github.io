@@ -219,6 +219,12 @@
     display: none; /* Oculta la barra de desplazamiento en navegadores basados en WebKit */
 }
 
+.slide {
+    flex-shrink: 0; /* Evita que los slides se contraigan */
+    scroll-snap-align: start; /* Alinea los slides al inicio durante el scroll */
+    min-width: 100%; /* Cada slide ocupa el ancho completo del contenedor */
+}
+
 .slide img {
   width: 100%;
   height: auto;
