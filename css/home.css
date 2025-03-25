@@ -208,14 +208,16 @@
 }
 
 .slides {
-  display: flex;
-  transition: transform 0.5s ease-in-out;
+    display: flex;
+    overflow-x: auto; /* Habilita el scroll horizontal */
+    scroll-snap-type: x mandatory; /* Asegura que los slides se alineen correctamente */
+    -webkit-overflow-scrolling: touch; /* Mejora el scroll en dispositivos iOS */
 }
 
 .slide {
-  min-width: 100%;
-  position: relative; /* Habilita la posición relativa para los hijos */
-  transition: opacity 0.5s ease-in-out;
+    flex-shrink: 0; /* Evita que los slides se contraigan */
+    scroll-snap-align: start; /* Alinea los slides al inicio durante el scroll */
+    min-width: 100%; /* Cada slide ocupa el ancho completo del contenedor */
 }
 
 .slide img {
