@@ -2,16 +2,11 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-
-    <!-- IMPORTANTE para móviles -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Descarga de Video</title>
 
     <style>
-        * {
-            box-sizing: border-box;
-        }
+        * { box-sizing: border-box; }
 
         body {
             margin: 0;
@@ -25,7 +20,7 @@
             padding: 16px;
         }
 
-        /* ---------- VIDEO PRINCIPAL ---------- */
+        /* VIDEO PRINCIPAL */
         .principal {
             background: #ffffff;
             padding: 20px;
@@ -33,16 +28,8 @@
             text-align: center;
         }
 
-        .principal h1 {
-            font-size: 1.4rem;
-            margin-bottom: 6px;
-        }
-
-        .principal p {
-            font-size: 0.95rem;
-            color: #555;
-            margin-bottom: 14px;
-        }
+        .principal h1 { font-size: 1.4rem; margin-bottom: 6px; }
+        .principal p  { font-size: 0.95rem; color: #555; margin-bottom: 14px; }
 
         .principal img {
             width: 100%;
@@ -66,9 +53,7 @@
             font-size: 1rem;
         }
 
-        .btn:hover {
-            background: #c92f3b;
-        }
+        .btn:hover { background: #c92f3b; }
 
         hr {
             margin: 30px 0;
@@ -76,7 +61,7 @@
             border-top: 1px solid #ddd;
         }
 
-        /* ---------- GRID DE VIDEOS ---------- */
+        /* GRID INFERIOR */
         .grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -98,31 +83,16 @@
             cursor: pointer;
         }
 
-        .card h3 {
-            font-size: 1rem;
-            margin: 4px 0;
-        }
+        .card h3 { font-size: 1rem; margin: 4px 0; }
 
-        /* ---------- TABLET ---------- */
+        /* TABLET */
         @media (min-width: 600px) {
-            .principal h1 {
-                font-size: 1.6rem;
-            }
-
-            .grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
+            .grid { grid-template-columns: repeat(2, 1fr); }
         }
 
-        /* ---------- PC ---------- */
+        /* PC */
         @media (min-width: 992px) {
-            .principal h1 {
-                font-size: 1.8rem;
-            }
-
-            .grid {
-                grid-template-columns: repeat(4, 1fr);
-            }
+            .grid { grid-template-columns: repeat(4, 1fr); }
         }
     </style>
 </head>
@@ -150,30 +120,34 @@
     <!-- GRID INFERIOR -->
     <div class="grid">
 
+        <!-- T1 -->
         <div class="card">
             <a href="https://link1.com">
-                <img src="img1.jpg" alt="T1">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQF_J5QPMqQTyZM5k7nq0JZssbn7OuLho4JtA&s" alt="T1">
             </a>
             <h3>T1</h3>
         </div>
 
+        <!-- T2 -->
         <div class="card">
             <a href="https://link2.com">
-                <img src="img2.jpg" alt="T2">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUflqsF1NhNbAWMigWP8DHg6nlZ8UI4gxK0Q&s" alt="T2">
             </a>
             <h3>T2</h3>
         </div>
 
+        <!-- T3 (placeholder seguro) -->
         <div class="card">
             <a href="https://link3.com">
-                <img src="img3.jpg" alt="T3">
+                <img src="https://via.placeholder.com/400x225?text=Video+T3" alt="T3">
             </a>
             <h3>T3</h3>
         </div>
 
+        <!-- T4 (placeholder seguro) -->
         <div class="card">
             <a href="https://link4.com">
-                <img src="img4.jpg" alt="T4">
+                <img src="https://via.placeholder.com/400x225?text=Video+T4" alt="T4">
             </a>
             <h3>T4</h3>
         </div>
