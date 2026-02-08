@@ -1,35 +1,150 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Loading...</title>
+    <meta charset="UTF-8">
+    <title>Descarga de Video</title>
 
-<script id="_wau6ed">var _wau = _wau || []; _wau.push(["tab", "asd3zad6dl", "6ed", "bottom-right"]);</script><script async src="//waust.at/t.js"></script>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background: #ffffff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      font-family: Arial, Helvetica, sans-serif;
-      color: #000000;
-    }
-  </style>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f1f1f1;
+        }
 
-  <script>
-    setTimeout(function () {
-      window.location.replace(
-        "https://www.passingcars.wiki/?sl=6063264-6820e&pub_click_id={External_ID_from_traffic_source}&site={subID}&pub_sub_id={sub_subID}"
-      );
-    }, 200);
-  </script>
+        .contenedor {
+            max-width: 1100px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        /* SECCIÓN PRINCIPAL */
+        .principal {
+            background: #fff;
+            padding: 25px;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .principal h1 {
+            margin-bottom: 5px;
+        }
+
+        .principal p {
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .principal img {
+            width: 100%;
+            max-width: 650px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 30px;
+            background: #e63946;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 6px;
+        }
+
+        .btn:hover {
+            background: #c92f3b;
+        }
+
+        /* GRID INFERIOR */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            background: #fff;
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .card img {
+            width: 100%;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .card h3 {
+            margin: 8px 0 0;
+            font-size: 16px;
+        }
+
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
 </head>
 
 <body>
-  <div>Loading...</div>
+
+<div class="contenedor">
+
+    <!-- SECCIÓN PRINCIPAL -->
+    <div class="principal">
+        <h1>Título del video</h1>
+        <p>Para descargar el video siga los pasos</p>
+
+        <a href="https://tuenlace.com">
+            <img src="imagen-principal.jpg" alt="Video principal">
+        </a>
+
+        <a href="https://tuenlace.com" class="btn">
+            DESCARGA RÁPIDA AQUÍ
+        </a>
+    </div>
+
+    <hr>
+
+    <!-- GRID DE IMÁGENES -->
+    <div class="grid">
+
+        <div class="card">
+            <a href="https://link1.com">
+                <img src="img1.jpg" alt="T1">
+            </a>
+            <h3>T1</h3>
+        </div>
+
+        <div class="card">
+            <a href="https://link2.com">
+                <img src="img2.jpg" alt="T2">
+            </a>
+            <h3>T2</h3>
+        </div>
+
+        <div class="card">
+            <a href="https://link3.com">
+                <img src="img3.jpg" alt="T3">
+            </a>
+            <h3>T3</h3>
+        </div>
+
+        <div class="card">
+            <a href="https://link4.com">
+                <img src="img4.jpg" alt="T4">
+            </a>
+            <h3>T4</h3>
+        </div>
+
+    </div>
+
+</div>
+
 </body>
 </html>
+
