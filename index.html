@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TEMPTORIX</title>
+    <title>Descarga de Video</title>
 
     <style>
-        * { box-sizing: border-box; }
+        * {
+            box-sizing: border-box;
+        }
 
         body {
             margin: 0;
@@ -28,8 +30,16 @@
             text-align: center;
         }
 
-        .principal h1 { font-size: 1.4rem; margin-bottom: 6px; }
-        .principal p  { font-size: 0.95rem; color: #555; margin-bottom: 14px; }
+        .principal h1 {
+            font-size: 1.4rem;
+            margin-bottom: 6px;
+        }
+
+        .principal p {
+            font-size: 0.95rem;
+            color: #555;
+            margin-bottom: 14px;
+        }
 
         .principal img {
             width: 100%;
@@ -40,6 +50,29 @@
             cursor: pointer;
         }
 
+        /* ICONOS DE DESCARGA */
+        .plataformas {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .plataforma {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: bold;
+            font-size: 0.95rem;
+        }
+
+        .plataforma img {
+            width: 28px;
+            height: 28px;
+        }
+
+        /* BOTÓN */
         .btn {
             display: inline-block;
             width: 100%;
@@ -53,7 +86,9 @@
             font-size: 1rem;
         }
 
-        .btn:hover { background: #c92f3b; }
+        .btn:hover {
+            background: #c92f3b;
+        }
 
         hr {
             margin: 30px 0;
@@ -83,16 +118,23 @@
             cursor: pointer;
         }
 
-        .card h3 { font-size: 1rem; margin: 4px 0; }
+        .card h3 {
+            font-size: 1rem;
+            margin: 4px 0;
+        }
 
         /* TABLET */
         @media (min-width: 600px) {
-            .grid { grid-template-columns: repeat(2, 1fr); }
+            .grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
         /* PC */
         @media (min-width: 992px) {
-            .grid { grid-template-columns: repeat(4, 1fr); }
+            .grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
         }
     </style>
 </head>
@@ -103,15 +145,28 @@
 
     <!-- VIDEO PRINCIPAL -->
     <div class="principal">
-        <h1>MUJER ES DETROZADA POR CARVO</h1>
-        <p>PARA DESCRGAR EL VIDEO SIGA LOS PASOS</p>
+        <h1>Título del video</h1>
+        <p>Para descargar el video siga los pasos</p>
 
-        <a href="https://www.passingcars.wiki/?sl=6063264-6820e&pub_click_id={External_ID_from_traffic_source}&site={subID}&pub_sub_id={sub_subID}
-">
+        <a href="https://tuenlace.com">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3VOMpLxYT-XE2QvIUw5HK-qF6TqBPczQdMQ&s" alt="Video principal">
         </a>
 
-        <a href="https://www.passingcars.wiki/?sl=6063264-6820e&pub_click_id={External_ID_from_traffic_source}&site={subID}&pub_sub_id={sub_subID} " class="btn">
+        <!-- ICONOS MEGA Y MEDIAFIRE -->
+        <div class="plataformas">
+            <div class="plataforma">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/e/e6/Mega_icon.svg" alt="MEGA">
+                <span>MEGA</span>
+            </div>
+
+            <div class="plataforma">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/9/9e/MediaFire_logo.png" alt="MEDIAFIRE">
+                <span>MEDIAFIRE</span>
+            </div>
+        </div>
+
+        <!-- BOTÓN -->
+        <a href="https://tuenlace.com" class="btn">
             DESCARGA RÁPIDA AQUÍ
         </a>
     </div>
@@ -121,36 +176,32 @@
     <!-- GRID INFERIOR -->
     <div class="grid">
 
-        <!-- T1 -->
         <div class="card">
-            <a href="https://www.passingcars.wiki/?sl=6063264-6820e&pub_click_id={External_ID_from_traffic_source}&site={subID}&pub_sub_id={sub_subID}">
+            <a href="https://link1.com">
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQF_J5QPMqQTyZM5k7nq0JZssbn7OuLho4JtA&s" alt="T1">
             </a>
-            <h3>LA DETROZAN DURO</h3>
+            <h3>T1</h3>
         </div>
 
-        <!-- T2 -->
         <div class="card">
-            <a href="https://www.passingcars.wiki/?sl=6063264-6820e&pub_click_id={External_ID_from_traffic_source}&site={subID}&pub_sub_id={sub_subID}">
+            <a href="https://link2.com">
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUflqsF1NhNbAWMigWP8DHg6nlZ8UI4gxK0Q&s" alt="T2">
             </a>
-            <h3>GRITA COMO UNA NIÑA</h3>
+            <h3>T2</h3>
         </div>
 
-        <!-- T3 (placeholder seguro) -->
         <div class="card">
-            <a href="https://www.passingcars.wiki/?sl=6063264-6820e&pub_click_id={External_ID_from_traffic_source}&site={subID}&pub_sub_id={sub_subID}">
-                <img src="https://www.perfektdamen.co/contents/videos_screenshots/460000/460758/960x540/3.jpg" alt="T3">
+            <a href="https://link3.com">
+                <img src="https://via.placeholder.com/400x225?text=Video+T3" alt="T3">
             </a>
-            <h3>LE ROMPEN EL CULO</h3>
+            <h3>T3</h3>
         </div>
 
-        <!-- T4 (placeholder seguro) -->
         <div class="card">
-            <a href="https://www.passingcars.wiki/?sl=6063264-6820e&pub_click_id={External_ID_from_traffic_source}&site={subID}&pub_sub_id={sub_subID}">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXvgo2gBef4tEZPlKi9YiNo3b0_RR1nhLxtw&s" alt="T4">
+            <a href="https://link4.com">
+                <img src="https://via.placeholder.com/400x225?text=Video+T4" alt="T4">
             </a>
-            <h3>CHILLA DURO</h3>
+            <h3>T4</h3>
         </div>
 
     </div>
